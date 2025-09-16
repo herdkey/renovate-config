@@ -2,4 +2,4 @@
 set shell := ["/usr/bin/env", "bash", "-euo", "pipefail", "-c"]
 
 validate:
-    "{{justfile_directory()}}/scripts/validate-renovate.sh"
+    "{{justfile_directory()}}/scripts/validate.sh"
