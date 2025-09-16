@@ -12,10 +12,18 @@
   rebaseWhen: "behind-base-branch",
   rangeStrategy: "bump",
   automerge: false,
-  allowBotCommands: true,
 
   lockFileMaintenance: {
     enabled: true,
     schedule: ["after 2am on sunday"],
   },
+
+  packageRules: [
+    {
+      "matchPackageNames": ["herdkey/renovate-config"],
+      "matchCurrentValue": "/^v\\d+$/",
+      "enabled": false,
+      "description": "Don’t upgrade floating major tags (#v1) in renovate extends"
+    },
+  ],
 }
