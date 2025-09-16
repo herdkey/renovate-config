@@ -1,0 +1,17 @@
+{
+  packageRules: [
+    {
+      description: "Group JavaScript package manager deps; split majors from minors/patches",
+      matchManagers: ["npm"],
+      groupName: "javascript-deps",
+      separateMajorMinor: true,
+      postUpdateOptions: ["npmDedupe"],
+    },
+    {
+      description: "Group Node.js runtime version updates; split majors from minors/patches",
+      matchDatasources: ["node-version"],
+      groupName: "nodejs",
+      separateMajorMinor: true,
+    },
+  ],
+}
