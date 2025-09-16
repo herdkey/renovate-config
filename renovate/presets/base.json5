@@ -12,6 +12,7 @@
   rebaseWhen: "behind-base-branch",
   rangeStrategy: "bump",
   automerge: false,
+  allowBotCommands: true,
 
   lockFileMaintenance: {
     enabled: true,
