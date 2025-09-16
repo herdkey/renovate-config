@@ -1,0 +1,10 @@
+{
+  packageRules: [
+    {
+      description: "Group GitHub Actions",
+      matchManagers: ["github-actions"],
+      groupName: "github-actions",
+      separateMajorMinor: true,
+    },
+  ],
+}

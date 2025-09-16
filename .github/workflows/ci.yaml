@@ -7,7 +7,6 @@ on:
       - main
 
 permissions:
-  id-token: write
   contents: read
 
 jobs:
@@ -15,9 +14,31 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v5
         with:
-          node-version: lts/*
+          node-version: ${{ inputs.node-version }}
 
-      - name: Run renovate
+      - name: Cache npm cache (speeds up npx)
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          # The key includes a hash of all Renovate config files.
+          # Why: `npx renovate` may fetch extra parser packages or plugins depending on
+          # the config (e.g., if you add a new manager or preset). By tying the cache
+          # key to these files, any config change will invalidate the cache and ensure
+          # Renovate downloads the right dependencies instead of reusing stale ones.
+          key: >-
+            ${{ runner.os }}-npm-v1-${{ hashFiles(
+              'renovate.json*',
+              '.github/renovate.json*',
+              '.gitlab/renovate.json*',
+              '.renovaterc*',
+              'renovate/presets/**/*.json*'
+            ) }}
+          restore-keys: |
+            ${{ runner.os }}-npm-v1-
+
+      - name: Validate Renovate configs
+        shell: bash
         run: ./scripts/validate.sh
