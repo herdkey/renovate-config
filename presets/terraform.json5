@@ -1,0 +1,29 @@
+{
+  extends: ["./base.json5"],
+
+  enabledManagers: [
+    "terraform",
+    "terraform-version",
+    "github-actions",
+  ],
+
+  packageRules: [
+    {
+      description: "Group Terraform core + providers; split majors from minors/patches",
+      matchManagers: ["terraform", "terraform-version"],
+      matchDatasources: [
+        "terraform-provider",
+        "terraform-module",
+        "terraform-version",
+      ],
+      groupName: "terraform",
+      separateMajorMinor: true,
+    },
+    {
+      description: "Group GitHub Actions",
+      matchManagers: ["github-actions"],
+      groupName: "github-actions",
+      separateMajorMinor: true,
+    },
+  ],
+}

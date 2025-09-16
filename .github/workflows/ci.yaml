@@ -1,0 +1,24 @@
+name: Validate Renovate presets
+
+on:
+  pull_request:
+    paths:
+      - "presets/**/*.json"
+      - "presets/**/*.json5"
+  push:
+    paths:
+      - "presets/**/*.json"
+      - "presets/**/*.json5"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate local Renovate configs
+        uses: renovatebot/github-action@v39.1.2
+        with:
+          renovate-version: latest
+          token: ${{ secrets.GITHUB_TOKEN }}
+          docker-cmd-file: scripts/validate-renovate.sh

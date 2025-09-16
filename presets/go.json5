@@ -1,0 +1,24 @@
+{
+  extends: ["./base.json5"],
+
+  enabledManagers: [
+    "gomod",
+    "github-actions",
+  ],
+
+  packageRules: [
+    {
+      description: "Group Go deps; tidy; split majors from minors/patches",
+      matchManagers: ["gomod"],
+      groupName: "go-deps",
+      separateMajorMinor: true,
+      postUpdateOptions: ["gomodTidy", "gomodUpdateImportPaths"],
+    },
+    {
+      description: "Group GitHub Actions",
+      matchManagers: ["github-actions"],
+      groupName: "github-actions",
+      separateMajorMinor: true,
+    },
+  ],
+}

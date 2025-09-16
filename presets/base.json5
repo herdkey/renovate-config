@@ -1,0 +1,20 @@
+{
+  $schema: "https://docs.renovatebot.com/renovate-schema.json",
+
+  // Shared defaults
+  extends: ["config:recommended"],
+  timezone: "America/Los_Angeles",
+
+  labels: ["deps"],
+  dependencyDashboard: true,
+  prHourlyLimit: 4,
+  prConcurrentLimit: 10,
+  rebaseWhen: "behind-base-branch",
+  rangeStrategy: "bump",
+  automerge: false,
+
+  lockFileMaintenance: {
+    enabled: true,
+    schedule: ["after 2am on sunday"],
+  },
+}
