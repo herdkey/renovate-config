@@ -1,5 +1,5 @@
 {
   "extends": [
-    "local>presets/base.json5"
+    "local>renovate/presets/base.json5"
   ]
 }
