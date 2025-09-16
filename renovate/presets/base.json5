@@ -20,10 +20,10 @@
 
   packageRules: [
     {
-      "matchPackageNames": ["herdkey/renovate-config"],
-      "matchCurrentValue": "/^v\\d+$/",
-      "enabled": false,
-      "description": "Don’t upgrade floating major tags (#v1) in renovate extends"
+      matchPackageNames: ["herdkey/renovate-config"],
+      matchCurrentValue: "/^v\\d+$/",
+      enabled: false,
+      description: "Don’t upgrade floating major tags (#v1) in renovate extends",
     },
   ],
 }
