@@ -17,7 +17,7 @@ jobs:
 
       - uses: actions/setup-node@v5
         with:
-          node-version: ${{ inputs.node-version }}
+          node-version: lts/*
 
       - name: Cache npm cache (speeds up npx)
         uses: actions/cache@v4
