@@ -1,0 +1,15 @@
+name: Tag
+
+on:
+  # Run in this repo when a PR is merged to main.
+  pull_request:
+    types: [closed]
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  tag:
+    name: Tag
+    uses: herdkey/github-actions/.github/workflows/tag.yml@v1

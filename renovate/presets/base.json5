@@ -20,10 +20,11 @@
 
   packageRules: [
     {
-      matchPackageNames: ["herdkey/renovate-config"],
-      matchCurrentValue: "/^v\\d+$/",
-      enabled: false,
-      description: "Don’t upgrade floating major tags (#v1) in renovate extends",
-    },
+      "matchManagers": ["github-actions", "renovate-config-presets"],
+      "matchCurrentValue": "/^v\\d+$/",
+      "allowedVersions": "/^v\\d+$/",
+      "pinDigests": false,
+      "description": "If a workflow uses @vN, only offer upgrades to other @vN (i.e., new majors). Ignore vN.x.y."
+    }
   ],
 }

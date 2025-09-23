@@ -19,6 +19,10 @@ if [ "${#files[@]}" -eq 0 ]; then
     exit 0
 fi
 
+# Show renovate version
+echo "==> Renovate version"
+npx --yes --package renovate -- renovate -v
+
 for f in "${files[@]}"; do
     echo "==> Validating $f"
     npx --yes --package renovate -- renovate-config-validator "$f"
