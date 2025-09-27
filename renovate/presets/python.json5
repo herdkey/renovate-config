@@ -1,0 +1,16 @@
+{
+  packageRules: [
+    {
+      description: "Group Python package manager deps; split majors from minors/patches",
+      matchManagers: ["pip_requirements", "pip_setup", "pipenv", "poetry"],
+      groupName: "python-deps",
+      separateMajorMinor: true,
+    },
+    {
+      description: "Group Python runtime version updates; split majors from minors/patches",
+      matchDatasources: ["python-version"],
+      groupName: "python-runtime",
+      separateMajorMinor: true,
+    },
+  ],
+}
